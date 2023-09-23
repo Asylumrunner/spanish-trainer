@@ -31,7 +31,10 @@ Expected output:
     "infinitive": the infinitive form of the verb in Spanish
 }
 """
-@app.route("/card", methods=["GET"])
+@app.route("/flashcard", methods=["GET"])
 def get_flashcard():
-    payload = request.json
-    return "yup"
+    payload = request.args
+    print(payload)
+    if not payload["language"] or payload["language"] not in ["ENG", "ESP"]:
+        return "Invalid origin-language. origin-language must be included and be set to ENG or ESP", 400
+    return dictionary_handler.get_verb(payload["language"])
