@@ -33,8 +33,8 @@ Expected output:
 """
 @app.route("/flashcard", methods=["GET"])
 def get_flashcard():
+    return dictionary_handler.get_verb()
+
+@app.route("/conjugation", methods=["GET"])
+def get_conjugation():
     payload = request.args
-    print(payload)
-    if not payload["language"] or payload["language"] not in ["ENG", "ESP"]:
-        return "Invalid origin-language. origin-language must be included and be set to ENG or ESP", 400
-    return dictionary_handler.get_verb(payload["language"])

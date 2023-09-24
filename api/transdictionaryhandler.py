@@ -19,15 +19,14 @@ class TransDictionaryHandler():
                 print("Exception in executing command: {}".format(e))
 
     # Returns an unconjugated verb. For flashcard mode
-    def get_verb(self, language):
+    def get_verb(self):
         db_response = self.cursor.execute("SELECT * FROM infinitive ORDER BY random() LIMIT 1").fetchone()
         response = {
-            "verb-untranslated": db_response[0] if language == "ESP" else db_response[1],
-            "verb-translated": db_response[1] if language == "ESP" else db_response[0],
-            "infinitive": db_response[0]
+            "verb-spanish": db_response[0],
+            "verb-english": db_response[1]
         }
         return response
     
     # Returns a conjugated verb. For conjugation mode
-    def get_conjugated_verb(self, language, tenses, region, subject=[True, True, True, True, True, True]):
+    def get_conjugated_verb(self, tenses, region, subject=[True, True, True, True, True, True]):
         return "bah bah bah"
