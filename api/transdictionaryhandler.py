@@ -28,5 +28,19 @@ class TransDictionaryHandler():
         return response
     
     # Returns a conjugated verb. For conjugation mode
-    def get_conjugated_verb(self, tenses, region, subject=[True, True, True, True, True, True]):
-        return "bah bah bah"
+    def get_conjugated_verb(self, moods, tenses):
+        db_response = self.cursor.execute("SELECT * FROM verbs LEFT JOIN infinitive USING (infinitive) WHERE mood IN ('{}') AND tense IN ('{}') ORDER BY random() LIMIT 1".format('\', \''.join(moods), '\', \''.join(tenses))).fetchone()
+        response = {
+            "verb-spanish": db_response[0],
+            "verb-english": db_response[3],
+            "infinitive-english": db_response[10],
+            "mood": db_response[1],
+            "tense": db_response[2],
+            "first-person-singular": db_response[4],
+            "second-person-singular": db_response[5],
+            "third-person-singular": db_response[6],
+            "first-person-plural": db_response[7],
+            "second-person-plural": db_response[8],
+            "third-person-plural": db_response[9]
+        }
+        return response
