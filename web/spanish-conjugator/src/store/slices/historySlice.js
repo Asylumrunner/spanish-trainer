@@ -2,7 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const historySlice = createSlice({
     name: 'history',
-    initalState: {
+    initialState: {
         history: []
     },
     reducers: {

@@ -19,7 +19,7 @@ const dataApi = createApi({
             fetchConjugation: builder.query({
                 query: () => {
                     return {
-                        url: '/conjugation',,
+                        url: '/conjugation',
                         method: 'GET'
                     }
                 }
