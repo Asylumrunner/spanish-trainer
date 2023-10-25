@@ -1,0 +1,11 @@
+{
+    "dev": {
+        "app_function": "server.app",
+        "profile_name": "default",
+        "project_name": "api",
+        "runtime": "python3.10",
+        "s3_bucket": "spanish-conjugator-api",
+        "aws_region": "us-west-1",
+        "cors": true
+    }
+}
