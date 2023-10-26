@@ -1,4 +1,3 @@
-import './App.css'
 import Header from './components/Header'
 import Options from './components/Options'
 import HistoryList from './components/HistoryList'

@@ -1,15 +1,16 @@
-import { useFetchConjugationQuery } from "../store";
+import { useFetchConjugationQuery, useFetchFlashcardQuery } from "../store";
 
 function QuestionCard() {
     const fetchConjugation = useFetchConjugationQuery();
+    const fetchFlashcard = useFetchFlashcardQuery();
     
-    if (fetchConjugation.isFetching) {
+    if (fetchFlashcard.isFetching) {
         return <div>Fetching conjugation</div>
-    } else if (fetchConjugation.error) {
+    } else if (fetchFlashcard.error) {
         return <div>Fetching conjugation resulted in error</div>
     } else {
-        console.log(fetchConjugation.data)
-        return <div>Loaded</div>
+        console.log(fetchFlashcard.data)
+        return <div>{fetchFlashcard.data["verb-spanish"]}</div>
     }
 }
 
