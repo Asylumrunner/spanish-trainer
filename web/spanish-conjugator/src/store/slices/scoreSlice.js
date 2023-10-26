@@ -8,12 +8,12 @@ const scoreSlice = createSlice({
         streakLength: 0
     },
     reducers: {
-        markCorrectAnswer(state, action) {
+        markCorrectAnswer(state, _action) {
             state.totalQuestions += 1;
             state.correctQuestions += 1;
             state.streakLength += 1;
         },
-        markIncorrectAnswer(state, action) {
+        markIncorrectAnswer(state, _action) {
             state.totalQuestions += 1;
             state.streakLength = 0;
         }

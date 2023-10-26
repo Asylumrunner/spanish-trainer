@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
 const dataApi = createApi({
     reducerPath: 'data',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'some-long-ass-aws-shit',
+        baseUrl: 'https://l4hplxwcb3.execute-api.us-west-1.amazonaws.com/dev',
         credentials: 'same-origin'
     }),
     endpoints(builder) {
