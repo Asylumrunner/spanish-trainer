@@ -2,7 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import { setupListeners } from "@reduxjs/toolkit/dist/query"
 import { historyReducer, addQuestionToHistory } from './slices/historySlice'
 import { scoreReducer, markCorrectAnswer, markIncorrectAnswer } from './slices/scoreSlice';
-import { optionsReducer, toggleLanguageDirectionality, toggleMood, toggleTense } from './slices/optionsSlice';
+import { optionsReducer, toggleFlashcardMode, toggleLanguageDirectionality, toggleMood, toggleTense } from './slices/optionsSlice';
 import { dataApi } from './apis/dataApi';
 
 export const store = configureStore({
@@ -20,5 +20,5 @@ export const store = configureStore({
 
 setupListeners(store.dispatch);
 
-export { addQuestionToHistory, markCorrectAnswer, markIncorrectAnswer, toggleLanguageDirectionality, toggleMood, toggleTense }
+export { addQuestionToHistory, markCorrectAnswer, markIncorrectAnswer, toggleFlashcardMode, toggleLanguageDirectionality, toggleMood, toggleTense }
 export { useFetchFlashcardQuery, useFetchConjugationQuery } from './apis/dataApi'

@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const optionsSlice = createSlice({
     name: 'options',
     initialState: {
+        flashcardMode: true,
         englishToSpanish: true,
         moods: {
             "Indicativo": true,
@@ -22,6 +23,9 @@ const optionsSlice = createSlice({
         }
     },
     reducers: {
+        toggleFlashcardMode(state, action) {
+            state.flashcardMode = !state.flashcardMode;
+        },
         toggleLanguageDirectionality(state, action) {
             state.englishToSpanish = !state.englishToSpanish;
         },
@@ -34,5 +38,5 @@ const optionsSlice = createSlice({
     }
 });
 
-export const { toggleLanguageDirectionality, toggleTense, toggleMood } = optionsSlice.actions
+export const { toggleFlashcardMode, toggleLanguageDirectionality, toggleTense, toggleMood } = optionsSlice.actions
 export const optionsReducer = optionsSlice.reducer;
