@@ -1,4 +1,4 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query";
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const dataApi = createApi({
     reducerPath: 'data',
@@ -28,5 +28,6 @@ const dataApi = createApi({
     }
 });
 
+console.log(dataApi)
 export const { useFetchFlashcardQuery, useFetchConjugationQuery } = dataApi
 export { dataApi }

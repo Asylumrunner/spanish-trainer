@@ -1,5 +1,16 @@
+import { useFetchConjugationQuery } from "../store";
+
 function QuestionCard() {
-    return <div>This is a question card</div>
+    const fetchConjugation = useFetchConjugationQuery();
+    
+    if (fetchConjugation.isFetching) {
+        return <div>Fetching conjugation</div>
+    } else if (fetchConjugation.error) {
+        return <div>Fetching conjugation resulted in error</div>
+    } else {
+        console.log(fetchConjugation.data)
+        return <div>Loaded</div>
+    }
 }
 
 export default QuestionCard;
