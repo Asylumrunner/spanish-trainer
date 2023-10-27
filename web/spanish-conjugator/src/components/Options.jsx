@@ -77,6 +77,8 @@ function Options() {
             <div>{advancedOptions}</div>
         </div>
     )
+
+    //TODO: let me click on the text labels as well
 }
 
 export default Options;
