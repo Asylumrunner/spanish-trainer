@@ -24,10 +24,10 @@ const optionsSlice = createSlice({
     },
     reducers: {
         toggleFlashcardMode(state, action) {
-            state.flashcardMode = !state.flashcardMode;
+            state.flashcardMode = action.payload;
         },
         toggleLanguageDirectionality(state, action) {
-            state.englishToSpanish = !state.englishToSpanish;
+            state.englishToSpanish = action.payload;
         },
         toggleTense(state, action) {
             state.tenses[action.payload] = !state.tenses[action.payload];

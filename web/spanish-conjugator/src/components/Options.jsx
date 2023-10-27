@@ -17,12 +17,12 @@ function Options() {
         dispatch(toggleTense(tense))
     }
 
-    const setLanguageDirection = () => {
-        dispatch(toggleLanguageDirectionality())
+    const setLanguageDirection = (selectedDirection) => {
+        dispatch(toggleLanguageDirectionality(selectedDirection.value == "englishToSpanish" ? true : false))
     }
 
-    const setMode = () => {
-        dispatch(toggleFlashcardMode())
+    const setMode = (selectedMode) => {
+        dispatch(toggleFlashcardMode(selectedMode.value == "flashcard" ? true : false))
     }
 
     const modeOptions = [
@@ -68,7 +68,7 @@ function Options() {
         </div>)
     })
 
-    const advancedOptions = flashcardMode && (<div><div>Mood: {moodToggles}</div><div>Tenses: {tenseToggles}</div></div>)
+    const advancedOptions = !flashcardMode && (<div><div>Mood: {moodToggles}</div><div>Tenses: {tenseToggles}</div></div>)
 
     return (
         <div>
