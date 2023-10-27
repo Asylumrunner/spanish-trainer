@@ -1,5 +1,7 @@
-function HistoryCard() {
-    return <div>This is a History Card</div>
+function HistoryCard({data}) {
+    return (<div>
+        {data.question}
+    </div>)
 }
 
 export default HistoryCard;

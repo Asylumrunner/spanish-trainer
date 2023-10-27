@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import HistoryCard from "./HistoryCard"
 
 function HistoryList() {
     const historyList = useSelector((state) => {
@@ -7,7 +8,7 @@ function HistoryList() {
 
     const itemizedHistory = historyList.map((card) => {
         return (<div key={card.id}>
-            <div>{card.question}</div>
+            <HistoryCard data={card} />
         </div>)
     })
     return <div>{itemizedHistory}</div>
