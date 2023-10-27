@@ -9,10 +9,18 @@ function App() {
   return (
     <>
       <Header />
-      <Options />
-      <HistoryList />
-      <ScorePanel />
-      <QuestionCard />
+      <div className="flex flex-row">
+        <div className="basis-1/4">
+          <ScorePanel />
+          <Options />
+        </div>
+        <div className="basis-1/2">
+        <QuestionCard />
+        </div>
+        <div className="basis-1/4">
+          <HistoryList />
+        </div>
+      </div>
     </>
   )
 }
