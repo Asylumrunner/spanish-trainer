@@ -8,16 +8,16 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header className="mx-8"/>
       <div className="flex flex-row">
-        <div className="basis-1/4">
+        <div className="basis-1/4 mx-8 min-w-max">
           <ScorePanel />
           <Options />
         </div>
-        <div className="basis-1/2">
+        <div className="grow">
         <QuestionCard />
         </div>
-        <div className="basis-1/4">
+        <div className="basis-1/4 mx-8">
           <HistoryList />
         </div>
       </div>
