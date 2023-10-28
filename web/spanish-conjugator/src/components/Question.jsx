@@ -7,13 +7,30 @@ function Question({data, refreshFunction}) {
     const [playerInput, setPlayerInput] = useState("");
     const [answerSubmitted, setAnswerSubmitted] = useState(false);
 
+    const { englishToSpanish } = useSelector((state) => {
+        return state.options;
+    });
+
+    const question = englishToSpanish ? data["verb-english"] : data["verb-spanish"]
+    const answer = englishToSpanish ? data["verb-spanish"] : data["verb-english"]
+
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        dispatch(markCorrectAnswer())
+        let gotItRight = false;
+        console.log(playerInput);
+        console.log(answer);
+        if (playerInput == answer) {
+            dispatch(markCorrectAnswer()) 
+            gotItRight = true;
+        } else {
+            dispatch(markIncorrectAnswer())
+        }
         dispatch(addQuestionToHistory({
-            question: data["verb-spanish"],
+            question: question,
+            answerGiven: playerInput,
+            correctAnswer: answer,
             isConjugation: false,
-            isCorrect: true
+            isCorrect: gotItRight
         }))
         setAnswerSubmitted(true);
     }
@@ -24,7 +41,7 @@ function Question({data, refreshFunction}) {
 
     return (
         <div>
-            <div>{data["verb-spanish"]}</div>
+            <div>{question}</div>
             <div>
                 <form onSubmit={handleFormSubmit}>
                     <input disabled={answerSubmitted} value={playerInput} onChange={handleChange} />

@@ -10,6 +10,8 @@ const historySlice = createSlice({
             state.history.push({
                 id: nanoid(),
                 question: action.payload.question,
+                answerGiven: action.payload.answerGiven,
+                correctAnswer: action.payload.correctAnswer,
                 isConjugation: action.payload.isConjugation,
                 isCorrect: action.payload.isCorrect
             });
