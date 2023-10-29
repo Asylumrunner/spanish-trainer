@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Header className="mx-8"/>
-      <div className="flex flex-row">
+      <div className="flex flex-row w-screen">
         <div className="basis-1/4 mx-8 min-w-max">
           <ScorePanel />
           <Options />

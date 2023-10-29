@@ -73,14 +73,14 @@ function Question({data, refreshFunction}) {
     }
 
     return (
-        <div>
-            <div>{question}</div>
+        <div className="border-4 border-sky-500 rounded-md h-60 shadow-lg p-8">
+            <div className="text-center">{question}</div>
             <div>
                 <form onSubmit={handleFormSubmit}>
                     <input disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
                 </form>
             </div>
-            {answerSubmitted && <button onClick={() => {refreshFunction()}}>Refresh Question</button>}
+            <button className="" disabled={!answerSubmitted} onClick={() => {refreshFunction()}}>Refresh Question</button>
         </div>
     )
 }
