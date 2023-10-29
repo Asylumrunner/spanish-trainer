@@ -7,18 +7,51 @@ function Question({data, refreshFunction}) {
     const [playerInput, setPlayerInput] = useState("");
     const [answerSubmitted, setAnswerSubmitted] = useState(false);
 
-    const { englishToSpanish } = useSelector((state) => {
+    const { englishToSpanish, flashcardMode } = useSelector((state) => {
         return state.options;
     });
 
-    const question = englishToSpanish ? data["verb-english"] : data["verb-spanish"]
-    const answer = englishToSpanish ? data["verb-spanish"] : data["verb-english"]
+    const conjugationOptions = [
+        {
+            "key": "first-person-plural",
+            "subject": "First Person Plural"
+        },
+        {
+            "key": "first-person-singular",
+            "subject": "First Person Singular"
+        },
+        {
+            "key": "second-person-plural",
+            "subject": "Second Person Plural"
+        },
+        {
+            "key": "second-person-singular",
+            "subject": "Second Person Singular"
+        },
+        {
+            "key": "third-person-plural",
+            "subject": "Third Person Plural"
+        },
+        {
+            "key": "third-person-singular",
+            "subject": "Third Person Singular"
+        }
+    ]
 
+    const [randomConjugation, setRandomConjugation] = useState(conjugationOptions[Math.floor(Math.random() * conjugationOptions.length)]);
+
+    let question, answer = "placeholder";
+    if (flashcardMode) {
+        question = englishToSpanish ? data["infinitive-english"] : data["verb-spanish"]
+        answer = englishToSpanish ? data["verb-spanish"] : data["infinitive-english"]
+    } else {
+        question = (<div>{data["infinitive-english"]} <br />{data.mood} {data.tense} {randomConjugation.subject}</div>)
+        answer = data[randomConjugation["key"]]
+    }
+    
     const handleFormSubmit = (event) => {
         event.preventDefault();
         let gotItRight = false;
-        console.log(playerInput);
-        console.log(answer);
         if (playerInput == answer) {
             dispatch(markCorrectAnswer()) 
             gotItRight = true;
@@ -29,7 +62,7 @@ function Question({data, refreshFunction}) {
             question: question,
             answerGiven: playerInput,
             correctAnswer: answer,
-            isConjugation: false,
+            isConjugation: !flashcardMode,
             isCorrect: gotItRight
         }))
         setAnswerSubmitted(true);
