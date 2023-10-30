@@ -29,7 +29,7 @@ class TransDictionaryHandler():
     
     # Returns a conjugated verb. For conjugation mode
     def get_conjugated_verb(self, moods, tenses):
-        db_response = self.cursor.execute("SELECT * FROM verbs LEFT JOIN infinitive USING (infinitive) WHERE mood IN ('{}') AND tense IN ('{}') ORDER BY random() LIMIT 1".format('\', \''.join(moods), '\', \''.join(tenses))).fetchone()
+        db_response = self.cursor.execute("SELECT * FROM infinitive LEFT JOIN verbs USING (infinitive) WHERE mood IN ('{}') AND tense IN ('{}') ORDER BY random() LIMIT 1".format('\', \''.join(moods), '\', \''.join(tenses))).fetchone()
         response = {
             "verb-spanish": db_response[0],
             "verb-english": db_response[3],
