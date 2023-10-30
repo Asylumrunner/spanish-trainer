@@ -1,8 +1,16 @@
 import Question from "./Question"
 import { useFetchConjugationQuery } from "../store";
+import { useSelector } from "react-redux";
 
 function QuestionCard() {
-    const question = useFetchConjugationQuery();
+    const { moods, tenses } = useSelector((state) => {
+        return state.options;
+    })
+
+    const simplifiedMoods = Object.keys(moods).filter(mood => moods[mood]);
+    const simplifiedTenses = Object.keys(tenses).filter(tense => tenses[tense]);
+
+    const question = useFetchConjugationQuery(simplifiedMoods, simplifiedTenses);
 
     if (question.isFetching) {
         return <div>Fetching first question</div>
