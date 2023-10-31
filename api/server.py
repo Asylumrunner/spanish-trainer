@@ -15,7 +15,7 @@ def health_check():
 def get_flashcard():
     return dictionary_handler.get_verb()
 
-@app.route("/conjugation", methods=["GET"])
+@app.route("/conjugation", methods=["POST"])
 def get_conjugation():
     payload = request.args
     moods = payload['moods'] if 'moods' in payload else ['Indicativo', 'Subjunctivo']

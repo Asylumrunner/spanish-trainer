@@ -20,7 +20,7 @@ const dataApi = createApi({
                 query: ({moods, tenses}) => {
                     return {
                         url: '/conjugation',
-                        method: 'GET',
+                        method: 'POST',
                         body: {
                             moods, tenses
                         }
