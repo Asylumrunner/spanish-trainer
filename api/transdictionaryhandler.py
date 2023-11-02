@@ -32,15 +32,15 @@ class TransDictionaryHandler():
         db_response = self.cursor.execute("SELECT * FROM infinitive LEFT JOIN verbs USING (infinitive) WHERE mood IN ('{}') AND tense IN ('{}') ORDER BY random() LIMIT 1".format('\', \''.join(moods), '\', \''.join(tenses))).fetchone()
         response = {
             "verb-spanish": db_response[0],
-            "verb-english": db_response[3],
-            "infinitive-english": db_response[10],
-            "mood": db_response[1],
-            "tense": db_response[2],
-            "first-person-singular": db_response[4],
-            "second-person-singular": db_response[5],
-            "third-person-singular": db_response[6],
-            "first-person-plural": db_response[7],
-            "second-person-plural": db_response[8],
-            "third-person-plural": db_response[9]
+            "verb-english": db_response[4],
+            "infinitive-english": db_response[1],
+            "mood": db_response[2],
+            "tense": db_response[3],
+            "first-person-singular": db_response[5],
+            "second-person-singular": db_response[6],
+            "third-person-singular": db_response[7],
+            "first-person-plural": db_response[8],
+            "second-person-plural": db_response[9],
+            "third-person-plural": db_response[10]
         }
         return response

@@ -31,6 +31,5 @@ const dataApi = createApi({
     }
 });
 
-console.log(dataApi)
 export const { useFetchFlashcardQuery, useFetchConjugationQuery } = dataApi
 export { dataApi }
