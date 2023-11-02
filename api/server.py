@@ -17,7 +17,7 @@ def get_flashcard():
 
 @app.route("/conjugation", methods=["POST"])
 def get_conjugation():
-    payload = request.args
+    payload = request.get_json()
     moods = payload['moods'] if 'moods' in payload else ['Indicativo', 'Subjunctivo']
     tenses = payload['tenses'] if 'tenses' in payload else ['Presente', 'Futuro', 'Imperfecto', 'PretÃ©rito', 'Condicional', 'Presente perfecto', 'Futuro perfecto', 'Pluscuamperfecto', 'PretÃ©rito anterior', 'Condicional perfecto']
     return dictionary_handler.get_conjugated_verb(moods, tenses)

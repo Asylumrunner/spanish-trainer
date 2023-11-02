@@ -41,6 +41,7 @@ class TransDictionaryHandler():
             "third-person-singular": db_response[7],
             "first-person-plural": db_response[8],
             "second-person-plural": db_response[9],
-            "third-person-plural": db_response[10]
+            "third-person-plural": db_response[10],
+            "sql_query_executed": "SELECT * FROM infinitive LEFT JOIN verbs USING (infinitive) WHERE mood IN ('{}') AND tense IN ('{}') ORDER BY random() LIMIT 1".format('\', \''.join(moods), '\', \''.join(tenses))
         }
         return response

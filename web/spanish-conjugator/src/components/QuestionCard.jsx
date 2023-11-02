@@ -10,6 +10,9 @@ function QuestionCard() {
     const simplifiedMoods = Object.keys(moods).filter(mood => moods[mood]);
     const simplifiedTenses = Object.keys(tenses).filter(tense => tenses[tense]);
 
+    console.log(simplifiedMoods)
+    console.log(simplifiedTenses)
+
     const question = useFetchConjugationQuery(simplifiedMoods, simplifiedTenses);
 
     if (question.isFetching) {

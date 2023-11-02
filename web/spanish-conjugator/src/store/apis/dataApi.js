@@ -17,12 +17,16 @@ const dataApi = createApi({
                 }
             }),
             fetchConjugation: builder.query({
-                query: ({moods, tenses}) => {
+                query: (moods, tenses) => {
+                    console.log("AAAAAAAAA")
+                    console.log(moods)
+                    console.log(tenses)
                     return {
                         url: '/conjugation',
                         method: 'POST',
                         body: {
-                            moods, tenses
+                            moods: moods,
+                            tenses: tenses
                         }
                     }
                 }
