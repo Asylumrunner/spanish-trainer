@@ -10,10 +10,12 @@ function QuestionCard() {
     const simplifiedMoods = Object.keys(moods).filter(mood => moods[mood]);
     const simplifiedTenses = Object.keys(tenses).filter(tense => tenses[tense]);
 
-    console.log(simplifiedMoods)
-    console.log(simplifiedTenses)
+    const requestBody = {
+        moods: simplifiedMoods,
+        tenses: simplifiedTenses
+    }
 
-    const question = useFetchConjugationQuery(simplifiedMoods, simplifiedTenses);
+    const question = useFetchConjugationQuery(requestBody);
 
     if (question.isFetching) {
         return <div>Fetching first question</div>
