@@ -72,15 +72,20 @@ function Question({data, refreshFunction}) {
         setPlayerInput(event.target.value);
     }
 
+    const button = answerSubmitted ? 
+        (<button className="border-solid bg-sky-950 m-auto mt-3 flex align-center" onClick={() => {refreshFunction()}}>Refresh Question</button>) :
+        (<button className="rounded-full border-solid bg-sky-600 m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
+
     return (
-        <div className="border-4 border-sky-500 rounded-md h-60 shadow-lg p-8">
-            <div className="text-center">{question}</div>
-            <div>
-                <form onSubmit={handleFormSubmit}>
-                    <input disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
+        <div className="border-4 border-sky-500 rounded-md h-60 shadow-lg p-8 flex flex-col justify-items-center">
+            <div className="text-center text-2xl">{question}</div>
+            {answerSubmitted && (<div className="text-center text-xl">{answer}</div>)}
+            <div className="justify-items-center">
+                <form className="" id="submission" onSubmit={handleFormSubmit}>
+                    <input className="block bg-zinc-400 m-auto mt-4" disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
                 </form>
+                {button}
             </div>
-            <button className="" disabled={!answerSubmitted} onClick={() => {refreshFunction()}}>Refresh Question</button>
         </div>
     )
 }
