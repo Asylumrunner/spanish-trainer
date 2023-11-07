@@ -73,16 +73,16 @@ function Question({data, refreshFunction}) {
     }
 
     const button = answerSubmitted ? 
-        (<button className="border-solid bg-sky-950 m-auto mt-3 flex align-center" onClick={() => {refreshFunction()}}>Refresh Question</button>) :
-        (<button className="rounded-full border-solid bg-sky-600 m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
+        (<button className="border-solid bg-eggplant m-auto mt-3 flex align-center" onClick={() => {refreshFunction()}}>Next Question</button>) :
+        (<button className="rounded-full border-solid bg-eggplant m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
 
     return (
-        <div className="border-4 border-sky-500 rounded-md h-60 shadow-lg p-8 flex flex-col justify-items-center">
+        <div className="border-4 border-cool rounded-md bg-english h-60 shadow-lg p-8 flex flex-col justify-items-center">
             <div className="text-center text-2xl">{question}</div>
             {answerSubmitted && (<div className="text-center text-xl">{answer}</div>)}
             <div className="justify-items-center">
-                <form className="" id="submission" onSubmit={handleFormSubmit}>
-                    <input className="block bg-zinc-400 m-auto mt-4" disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
+                <form className="text-black" id="submission" onSubmit={handleFormSubmit}>
+                    <input className="block bg-uranian text-black m-auto mt-4" disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
                 </form>
                 {button}
             </div>
