@@ -3,8 +3,12 @@ import Options from './components/Options'
 import HistoryList from './components/HistoryList'
 import ScorePanel from './components/ScorePanel'
 import QuestionCard from './components/QuestionCard'
+import { useSelector } from "react-redux";
 
 function App() {
+  const historyListSize = useSelector((state) => {
+    return state.history.history.length
+  })
 
   return (
     <>
@@ -18,7 +22,7 @@ function App() {
         <QuestionCard />
         </div>
         <div className="basis-1/4 mx-8">
-          <HistoryList />
+          { historyListSize > 0 && <HistoryList />}
         </div>
       </div>
     </>

@@ -1,6 +1,8 @@
 import { markCorrectAnswer, markIncorrectAnswer, addQuestionToHistory } from "../store";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 
 function Question({data, refreshFunction}) {
     const dispatch = useDispatch();
@@ -76,10 +78,14 @@ function Question({data, refreshFunction}) {
         (<button className="border-solid bg-eggplant m-auto mt-3 flex align-center" onClick={() => {refreshFunction()}}>Next Question</button>) :
         (<button className="rounded-full border-solid bg-eggplant m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
 
+    const icon = (playerInput == answer) ?
+        (<FontAwesomeIcon icon={faCircleCheck}/>) :
+        (<FontAwesomeIcon icon={faCircleXmark}/>)
+
     return (
         <div className="border-4 border-cool rounded-md bg-english h-60 shadow-lg p-8 flex flex-col justify-items-center">
             <div className="text-center text-2xl">{question}</div>
-            {answerSubmitted && (<div className="text-center text-xl">{answer}</div>)}
+            {answerSubmitted && (<div className="text-center text-xl">{icon} {answer}</div>)}
             <div className="justify-items-center">
                 <form className="text-black" id="submission" onSubmit={handleFormSubmit}>
                     <input className="block bg-uranian text-black m-auto mt-4" disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
