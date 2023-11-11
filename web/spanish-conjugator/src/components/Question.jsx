@@ -15,27 +15,27 @@ function Question({data, refreshFunction}) {
 
     const conjugationOptions = [
         {
-            "key": "first-person-plural",
+            "key": "form_1p",
             "subject": "First Person Plural"
         },
         {
-            "key": "first-person-singular",
+            "key": "form_1s",
             "subject": "First Person Singular"
         },
         {
-            "key": "second-person-plural",
+            "key": "form_2p",
             "subject": "Second Person Plural"
         },
         {
-            "key": "second-person-singular",
+            "key": "form_2s",
             "subject": "Second Person Singular"
         },
         {
-            "key": "third-person-plural",
+            "key": "form_3p",
             "subject": "Third Person Plural"
         },
         {
-            "key": "third-person-singular",
+            "key": "form_3s",
             "subject": "Third Person Singular"
         }
     ]
@@ -44,10 +44,10 @@ function Question({data, refreshFunction}) {
 
     let question, answer = "placeholder";
     if (flashcardMode) {
-        question = englishToSpanish ? data["infinitive-english"] : data["verb-spanish"]
-        answer = englishToSpanish ? data["verb-spanish"] : data["infinitive-english"]
+        question = englishToSpanish ? data["infinitive_english"] : data["infinitive"]
+        answer = englishToSpanish ? data["infinitive"] : data["infinitive_english"]
     } else {
-        question = (<div>{data["infinitive-english"]} <br />{data.mood} {data.tense} {randomConjugation.subject}</div>)
+        question = (<div>{data["infinitive_english"]} <br />{data.mood_english} {data.tense_english} {randomConjugation.subject}</div>)
         answer = data[randomConjugation["key"]]
     }
     

@@ -6,20 +6,20 @@ const optionsSlice = createSlice({
         flashcardMode: true,
         englishToSpanish: true,
         moods: {
-            "Indicativo": true,
-            "Subjunctivo": true
+            "Indicative": true,
+            "Subjunctive": true
         },
         tenses: {
-            "Presente": true,
-            "Futuro": true,
-            "Imperfecto": true,
-            "Pereterito": true,
-            "Condicional": true,
-            "Presente Perfecto": true,
-            "Futuro Perfecto": true,
-            "Pluscuamperfecto": true,
-            "Preterito Anterior": true,
-            "Condicional Perfecto": true,
+            "Present": true,
+            "Perfect": true,
+            "Imperfect": true,
+            "Preterite": true,
+            "Conditional": true,
+            "Present Perfect": true,
+            "Future Perfect": true,
+            "Past Perfect": true,
+            "Preterite (Archaic)": true,
+            "Conditional Perfect": true,
         }
     },
     reducers: {
