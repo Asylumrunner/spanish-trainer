@@ -73,7 +73,7 @@ function Options() {
     return (
         <div className="w-1/2">
             <div>{modeDropdown}</div>
-            <div>{languageDropdown}</div>
+            <div>{flashcardMode && languageDropdown}</div>
             <div>{advancedOptions}</div>
         </div>
     )
