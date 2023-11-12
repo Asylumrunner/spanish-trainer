@@ -21,23 +21,23 @@ function HistoryList() {
     })
     return (
         <div>
-            <button
+            { (historyList.length > 3) && (<button
                 disabled={startIdx === 0}
                 onClick={() => {
                     setStartIdx(startIdx - 1);
                     setEndIdx(endIdx - 1)
                 }}
                 className="border-solid bg-eggplant mb-3"
-            ><FontAwesomeIcon icon={(startIdx === 0) ? faXmark : faChevronUp} /></button>
+            ><FontAwesomeIcon icon={(startIdx === 0) ? faXmark : faChevronUp} /></button>)}
             <div>{itemizedHistory}</div>
-            <button
+            { (historyList.length > 3) && (<button
                 disabled={endIdx >= Object.values(historyList).length}
                 onClick={() => {
                     setStartIdx(startIdx + 1);
                     setEndIdx(endIdx + 1)
                 }}
                 className="border-solid bg-eggplant mt-3"
-            ><FontAwesomeIcon icon={(endIdx >= Object.values(historyList).length) ? faXmark : faChevronDown} /></button>
+            ><FontAwesomeIcon icon={(endIdx >= Object.values(historyList).length) ? faXmark : faChevronDown} /></button>)}
         </div>
     )
 }
