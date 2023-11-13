@@ -32,7 +32,22 @@ function Options() {
     const chosenMode = flashcardMode ? modeOptions[0] : modeOptions[1];
     //TODO: add a little ? with a rollover tooltip about what modes do
 
-    const modeDropdown = <Select defaultValue={chosenMode} options={modeOptions} onChange={setMode}/>
+    const customStyles = {
+        option: provided => ({
+          ...provided,
+          color: 'black'
+        }),
+        control: provided => ({
+          ...provided,
+          color: 'black'
+        }),
+        singleValue: provided => ({
+          ...provided,
+          color: 'black'
+        })
+      }
+
+    const modeDropdown = <Select styles={customStyles} defaultValue={chosenMode} options={modeOptions} onChange={setMode}/>
 
     const languageOptions = [
         { value: "englishToSpanish", label: "English to Spanish"},
@@ -40,7 +55,7 @@ function Options() {
     ]
     const chosenLanguage = englishToSpanish ? languageOptions[0]: languageOptions[1];
 
-    const languageDropdown = <Select defaultValue={chosenLanguage} options={languageOptions} onChange={setLanguageDirection}/>
+    const languageDropdown = <Select styles={customStyles} defaultValue={chosenLanguage} options={languageOptions} onChange={setLanguageDirection}/>
 
     const moodToggles = Object.entries(moods).map(([k, v]) => {
         return (<div key={k}>

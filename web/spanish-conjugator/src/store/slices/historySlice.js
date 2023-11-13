@@ -7,7 +7,7 @@ const historySlice = createSlice({
     },
     reducers: {
         addQuestionToHistory(state, action) {
-            state.history.push({
+            state.history.unshift({
                 id: nanoid(),
                 question: action.payload.question,
                 answerGiven: action.payload.answerGiven,

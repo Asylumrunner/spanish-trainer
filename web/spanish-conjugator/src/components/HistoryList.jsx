@@ -15,29 +15,31 @@ function HistoryList() {
     const visibleHistoryCards = historyList.slice(startIdx, endIdx);
 
     const itemizedHistory = visibleHistoryCards.map((card) => {
-        return (<div key={card.id}>
+        return (<div className="my-1" key={card.id}>
             <HistoryCard data={card} />
         </div>)
     })
     return (
-        <div>
-            { (historyList.length > 3) && (<button
-                disabled={startIdx === 0}
-                onClick={() => {
-                    setStartIdx(startIdx - 1);
-                    setEndIdx(endIdx - 1)
-                }}
-                className="border-solid bg-eggplant mb-3"
-            ><FontAwesomeIcon icon={(startIdx === 0) ? faXmark : faChevronUp} /></button>)}
-            <div>{itemizedHistory}</div>
-            { (historyList.length > 3) && (<button
+        <div className="flex flex-row">
+            <div className="flex flex-col">
+                { (historyList.length > 3) && (<button
+                    disabled={startIdx === 0}
+                    onClick={() => {
+                        setStartIdx(startIdx - 1);
+                        setEndIdx(endIdx - 1)
+                    }}
+                    className="border-solid bg-eggplant mb-1 mr-2 basis-1/2"
+                ><FontAwesomeIcon icon={(startIdx === 0) ? faXmark : faChevronUp} /></button>)}
+                { (historyList.length > 3) && (<button
                 disabled={endIdx >= Object.values(historyList).length}
                 onClick={() => {
                     setStartIdx(startIdx + 1);
                     setEndIdx(endIdx + 1)
                 }}
-                className="border-solid bg-eggplant mt-3"
-            ><FontAwesomeIcon icon={(endIdx >= Object.values(historyList).length) ? faXmark : faChevronDown} /></button>)}
+                className="border-solid bg-eggplant mt-1 mr-2 basis-1/2"
+                ><FontAwesomeIcon icon={(endIdx >= Object.values(historyList).length) ? faXmark : faChevronDown} /></button>)}
+            </div>
+            <div className="grow basis-full mr-2">{itemizedHistory}</div>
         </div>
     )
 }

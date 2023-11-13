@@ -42,6 +42,20 @@ function Question({data, refreshFunction}) {
 
     const [randomConjugation, setRandomConjugation] = useState(conjugationOptions[Math.floor(Math.random() * conjugationOptions.length)]);
 
+    const checkAnswer = (correctAnswer, providedAnswer) => {
+        const trimmedProvidedAnswer = providedAnswer.replace("to", "").trim()
+        const trimmedCorrectAnswer = correctAnswer.replace("to", "").trim()
+
+        if (trimmedProvidedAnswer === "") {
+            return false;
+        } else if (trimmedCorrectAnswer.includes(trimmedProvidedAnswer)) {
+            console.log("u did it")
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     let question, answer = "placeholder";
     if (flashcardMode) {
         question = englishToSpanish ? data["infinitive_english"] : data["infinitive"]
@@ -53,10 +67,9 @@ function Question({data, refreshFunction}) {
     
     const handleFormSubmit = (event) => {
         event.preventDefault();
-        let gotItRight = false;
-        if (playerInput == answer) {
+        let gotItRight = checkAnswer(answer, playerInput);
+        if (gotItRight) {
             dispatch(markCorrectAnswer()) 
-            gotItRight = true;
         } else {
             dispatch(markIncorrectAnswer())
         }
@@ -78,7 +91,7 @@ function Question({data, refreshFunction}) {
         (<button className="border-solid bg-eggplant m-auto mt-3 flex align-center" onClick={() => {refreshFunction()}}>Next Question</button>) :
         (<button className="rounded-full border-solid bg-eggplant m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
 
-    const icon = (playerInput == answer) ?
+    const icon = (checkAnswer(answer, playerInput)) ?
         (<FontAwesomeIcon icon={faCircleCheck}/>) :
         (<FontAwesomeIcon icon={faCircleXmark}/>)
 
