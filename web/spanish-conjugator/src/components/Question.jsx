@@ -96,7 +96,7 @@ function Question({data, refreshFunction}) {
         (<FontAwesomeIcon icon={faCircleXmark}/>)
 
     return (
-        <div className="border-4 border-cool rounded-md bg-english h-60 shadow-lg p-8 flex flex-col justify-items-center">
+        <div className="mx-4 mb-4 border-4 border-cool rounded-md bg-english h-60 shadow-lg p-8 flex flex-col justify-items-center">
             <div className="text-center text-2xl">{question}</div>
             {answerSubmitted && (<div className="text-center text-xl">{icon} {answer}</div>)}
             <div className="justify-items-center">

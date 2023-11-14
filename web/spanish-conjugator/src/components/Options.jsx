@@ -47,7 +47,7 @@ function Options() {
         })
       }
 
-    const modeDropdown = <Select styles={customStyles} defaultValue={chosenMode} options={modeOptions} onChange={setMode}/>
+    const modeDropdown = <Select className="grow" styles={customStyles} defaultValue={chosenMode} options={modeOptions} onChange={setMode}/>
 
     const languageOptions = [
         { value: "englishToSpanish", label: "English to Spanish"},
@@ -86,7 +86,7 @@ function Options() {
     const advancedOptions = !flashcardMode && (<div><div>Mood: {moodToggles}</div><div>Tenses: {tenseToggles}</div></div>)
 
     return (
-        <div className="w-1/2">
+        <div className="mb-4 w-1/2">
             <div>{modeDropdown}</div>
             <div>{flashcardMode && languageDropdown}</div>
             <div>{advancedOptions}</div>
