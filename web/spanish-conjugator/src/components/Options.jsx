@@ -86,7 +86,7 @@ function Options() {
     const advancedOptions = !flashcardMode && (<div><div>Mood: {moodToggles}</div><div>Tenses: {tenseToggles}</div></div>)
 
     return (
-        <div className="mb-4 w-1/2">
+        <div className="mb-4 w-3/4 xl:w-1/2">
             <div>{modeDropdown}</div>
             <div>{flashcardMode && languageDropdown}</div>
             <div>{advancedOptions}</div>

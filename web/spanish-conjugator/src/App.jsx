@@ -1,5 +1,5 @@
 import Header from './components/Header'
-import Options from './components/Options'
+import OptionsToggle from './components/OptionsToggle'
 import HistoryList from './components/HistoryList'
 import ScorePanel from './components/ScorePanel'
 import QuestionCard from './components/QuestionCard'
@@ -15,12 +15,12 @@ function App() {
     <>
       <Header className="mx-8"/>
       <div className="flex flex-col lg:flex-row w-screen">
-        <div className="basis-1/4 mx-8 min-w-max">
-          <ScorePanel />
-          <Options />
+        <div className="flex flex-row lg:flex-col basis-1/4 mx-8 min-w-max">
+          <div className="basis-4/5 lg:basis-1/5"><ScorePanel /></div>
+          <div className="basis-1/5 lg:basis-4/5"><OptionsToggle /></div>
         </div>
         <div className="grow">
-        <QuestionCard />
+          <QuestionCard />
         </div>
         <div className="basis-1/4 mx-8">
           { historyListSize > 0 && <HistoryList />}

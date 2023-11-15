@@ -88,7 +88,7 @@ function Question({data, refreshFunction}) {
     }
 
     const button = answerSubmitted ? 
-        (<button className="border-solid bg-eggplant m-auto mt-3 flex align-center" onClick={() => {refreshFunction()}}>Next Question</button>) :
+        (<button className="border-solid bg-eggplant m-auto mt-3 flex align-center" onClick={refreshFunction}>Next Question</button>) :
         (<button className="rounded-full border-solid bg-eggplant m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
 
     const icon = (checkAnswer(answer, playerInput)) ?
