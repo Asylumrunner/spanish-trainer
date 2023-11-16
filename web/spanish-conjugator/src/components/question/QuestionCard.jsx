@@ -1,5 +1,5 @@
 import Question from "./Question"
-import { useFetchConjugationQuery } from "../store";
+import { useFetchConjugationQuery } from "../../store";
 import { useSelector } from "react-redux";
 
 function QuestionCard() {

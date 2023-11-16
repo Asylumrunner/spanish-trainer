@@ -1,4 +1,4 @@
-import Modal from './templates/Modal'
+import Modal from '../templates/Modal'
 import { useState } from 'react';
 import Options from './Options'
 

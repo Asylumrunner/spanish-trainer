@@ -1,8 +1,8 @@
 import Header from './components/Header'
-import OptionsToggle from './components/OptionsToggle'
-import HistoryList from './components/HistoryList'
+import OptionsToggle from './components/options/OptionsToggle'
+import HistoryList from './components/history/HistoryList'
 import ScorePanel from './components/ScorePanel'
-import QuestionCard from './components/QuestionCard'
+import QuestionCard from './components/question/QuestionCard'
 import Footer from './components/Footer'
 import { useSelector } from "react-redux";
 

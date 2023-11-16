@@ -1,4 +1,4 @@
-import { markCorrectAnswer, markIncorrectAnswer, addQuestionToHistory } from "../store";
+import { markCorrectAnswer, markIncorrectAnswer, addQuestionToHistory } from "../../store";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'

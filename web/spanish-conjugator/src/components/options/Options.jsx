@@ -1,4 +1,4 @@
-import { toggleFlashcardMode, toggleLanguageDirectionality, toggleMood, toggleTense } from "../store";
+import { toggleFlashcardMode, toggleLanguageDirectionality, toggleMood, toggleTense } from "../../store";
 import { useSelector, useDispatch} from 'react-redux';
 import Select from "react-select";
 

@@ -20,7 +20,7 @@ function HistoryList() {
         </div>)
     })
     return (
-        <div className="flex flex-row">
+        <div className="hidden lg:flex flex-row">
             <div className="flex flex-col">
                 { (historyList.length > 3) && (<button
                     disabled={startIdx === 0}
