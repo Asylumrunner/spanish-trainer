@@ -16,8 +16,8 @@ function App() {
       <Header className="mx-8"/>
       <div className="flex flex-col lg:flex-row w-screen">
         <div className="flex flex-row lg:flex-col basis-1/4 mx-8 min-w-max">
-          <div className="basis-4/5 lg:basis-1/5"><ScorePanel /></div>
-          <div className="basis-1/5 lg:basis-4/5"><OptionsToggle /></div>
+          <div className="basis-3/5 lg:basis-1/5"><ScorePanel /></div>
+          <div className="basis-2/5 lg:basis-4/5"><OptionsToggle /></div>
         </div>
         <div className="grow">
           <QuestionCard />

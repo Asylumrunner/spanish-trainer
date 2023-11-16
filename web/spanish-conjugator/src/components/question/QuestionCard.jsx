@@ -1,6 +1,8 @@
 import Question from "./Question"
 import { useFetchConjugationQuery } from "../../store";
 import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 function QuestionCard() {
     const { moods, tenses } = useSelector((state) => {
@@ -18,9 +20,13 @@ function QuestionCard() {
     const question = useFetchConjugationQuery(requestBody);
 
     if (question.isFetching) {
-        return <div>Fetching first question</div>
+        return <div className="mx-4 mb-4 border-4 border-cool rounded-md bg-english h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
+            <FontAwesomeIcon icon={faSpinner} className="animate-spin" />
+        </div>
     } else if ( question.error) {
-        return <div>Error in fetching question</div>
+        return <div className="mx-4 mb-4 border-4 border-cool rounded-md bg-english h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
+            There was an error in retrieving the next question, perdónanos!
+        </div>
     } else {
         console.log(question.data)
         return <Question data={question.data} refreshFunction={question.refetch}></Question>
