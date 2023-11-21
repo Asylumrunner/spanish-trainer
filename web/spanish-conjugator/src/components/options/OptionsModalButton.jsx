@@ -15,7 +15,7 @@ function OptionsModalButton() {
     }
 
     const actionBar = <div>
-        <button className="border-solid bg-eggplant flex align-center" onClick={dismissModal}>Update Options</button>
+        <button className="bg-moonstone flex align-center" onClick={dismissModal}>Update Options</button>
     </div>
 
     const modal = <Modal onClose={dismissModal} actionBar={actionBar}>
@@ -23,7 +23,7 @@ function OptionsModalButton() {
     </Modal>
 
     return <div>
-        <button className="border-solid bg-eggplant ml-4 flex align-center" onClick={handleClick}>Options</button>
+        <button className="bg-moonstone ml-4 flex align-center" onClick={handleClick}>Options</button>
         {showModal && modal }
     </div>
 }

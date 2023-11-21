@@ -15,7 +15,7 @@ function HistoryList() {
     const visibleHistoryCards = historyList.slice(startIdx, endIdx);
 
     const itemizedHistory = visibleHistoryCards.map((card) => {
-        return (<div className="my-1" key={card.id}>
+        return (<div className="mb-1" key={card.id}>
             <HistoryCard data={card} />
         </div>)
     })
@@ -28,7 +28,7 @@ function HistoryList() {
                         setStartIdx(startIdx - 1);
                         setEndIdx(endIdx - 1)
                     }}
-                    className="border-solid bg-eggplant mb-1 mr-2 basis-1/2"
+                    className="bg-moonstone mb-1 mr-2 basis-1/2"
                 ><FontAwesomeIcon icon={(startIdx === 0) ? faMinus : faChevronUp} /></button>)}
                 { (historyList.length > 3) && (<button
                 disabled={endIdx >= Object.values(historyList).length}
@@ -36,7 +36,7 @@ function HistoryList() {
                     setStartIdx(startIdx + 1);
                     setEndIdx(endIdx + 1)
                 }}
-                className="border-solid bg-eggplant mt-1 mr-2 basis-1/2"
+                className="bg-moonstone mt-1 mr-2 basis-1/2"
                 ><FontAwesomeIcon icon={(endIdx >= Object.values(historyList).length) ? faMinus : faChevronDown} /></button>)}
             </div>
             <div className="grow basis-full mr-2">{itemizedHistory}</div>

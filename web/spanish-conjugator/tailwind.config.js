@@ -6,11 +6,10 @@ export default {
   ],
   theme: {
     colors: {
-      'raisin': '#1A1423',
-      'english': '#3D314A',
-      'eggplant': '#684756',
-      'cool': '#8D91C7',
-      'uranian': '#B0DAF1'
+      'uranian': '#B0DAF1',
+      'raisin-black': '#1B1B23',
+      'marian': '#3B4182',
+      'moonstone': '#3AA0BD'
     },
     extend: {},
   },

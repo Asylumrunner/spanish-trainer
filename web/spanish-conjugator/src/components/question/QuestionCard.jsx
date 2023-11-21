@@ -20,11 +20,11 @@ function QuestionCard() {
     const question = useFetchConjugationQuery(requestBody);
 
     if (question.isFetching) {
-        return <div className="mx-4 mb-4 border-4 border-cool rounded-md bg-english h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
+        return <div className="mx-4 mb-4 rounded-md bg-marian h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
             <FontAwesomeIcon icon={faSpinner} className="animate-spin" />
         </div>
     } else if ( question.error) {
-        return <div className="mx-4 mb-4 border-4 border-cool rounded-md bg-english h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
+        return <div className="mx-4 mb-4 rounded-md bg-marian h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
             There was an error in retrieving the next question, perdónanos!
         </div>
     } else {

@@ -88,15 +88,15 @@ function Question({data, refreshFunction}) {
     }
 
     const button = answerSubmitted ? 
-        (<button className="border-solid bg-eggplant m-auto mt-3 flex align-center" onClick={refreshFunction}>Next Question</button>) :
-        (<button className="rounded-full border-solid bg-eggplant m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
+        (<button className="bg-moonstone m-auto mt-3 flex align-center" onClick={refreshFunction}>Next Question</button>) :
+        (<button className="bg-moonstone m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
 
     const icon = (checkAnswer(answer, playerInput)) ?
         (<FontAwesomeIcon icon={faCircleCheck}/>) :
         (<FontAwesomeIcon icon={faCircleXmark}/>)
 
     return (
-        <div className="mx-4 mb-4 border-4 border-cool rounded-md bg-english h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
+        <div className="mx-4 mb-4 rounded-md bg-marian h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
             <div className="text-center text-lg lg:text-2xl">{question}</div>
             {answerSubmitted && (<div className="text-center text-base lg:text-xl">{icon} {answer}</div>)}
             <div className="justify-items-center">
