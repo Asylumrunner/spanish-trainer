@@ -97,7 +97,7 @@ function Question({data, refreshFunction}) {
 
     return (
         <div className="mx-4 mb-4 rounded-md bg-marian h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
-            <div className="text-center text-lg lg:text-2xl">{question}</div>
+            <div style={{fontFamily: 'Kanit'}} className="text-center text-lg lg:text-2xl">{question}</div>
             {answerSubmitted && (<div className="text-center text-base lg:text-xl">{icon} {answer}</div>)}
             <div className="justify-items-center">
                 <form className="text-black" id="submission" onSubmit={handleFormSubmit}>
