@@ -1,13 +1,16 @@
 import { markCorrectAnswer, markIncorrectAnswer, addQuestionToHistory } from "../../store";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
+
+const accentedVowels = ["á", "é", "í", "ó", "ú"];
 
 function Question({data, refreshFunction}) {
     const dispatch = useDispatch();
     const [playerInput, setPlayerInput] = useState("");
     const [answerSubmitted, setAnswerSubmitted] = useState(false);
+    const inputRef = useRef(null);
 
     const { englishToSpanish, flashcardMode } = useSelector((state) => {
         return state.options;
@@ -87,6 +90,21 @@ function Question({data, refreshFunction}) {
         setPlayerInput(event.target.value);
     }
 
+    const insertCharacter = (char) => {
+        const input = inputRef.current;
+        const start = input ? input.selectionStart ?? playerInput.length : playerInput.length;
+        const end = input ? input.selectionEnd ?? playerInput.length : playerInput.length;
+        const newValue = playerInput.slice(0, start) + char + playerInput.slice(end);
+        setPlayerInput(newValue);
+        if (input) {
+            requestAnimationFrame(() => {
+                input.focus();
+                const cursorPosition = start + char.length;
+                input.setSelectionRange(cursorPosition, cursorPosition);
+            });
+        }
+    }
+
     const button = answerSubmitted ? 
         (<button className="bg-moonstone m-auto mt-3 flex align-center" onClick={refreshFunction}>Next Question</button>) :
         (<button className="bg-moonstone m-auto mt-3 flex align-center" form="submission" type="submit">Submit Answer</button>)
@@ -96,13 +114,26 @@ function Question({data, refreshFunction}) {
         (<FontAwesomeIcon icon={faCircleXmark}/>)
 
     return (
-        <div className="mx-4 mb-4 rounded-md bg-marian h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
+        <div className="mx-4 mb-4 rounded-md bg-marian min-h-60 shadow-lg p-4 lg:p-8 flex flex-col justify-items-center">
             <div style={{fontFamily: 'Kanit'}} className="text-center text-lg lg:text-2xl">{question}</div>
             {answerSubmitted && (<div className="text-center text-base lg:text-xl">{icon} {answer}</div>)}
             <div className="justify-items-center">
                 <form className="text-black" id="submission" onSubmit={handleFormSubmit}>
-                    <input className="block bg-uranian text-black m-auto mt-4" disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
+                    <input ref={inputRef} className="block bg-uranian text-black m-auto mt-4" disabled={answerSubmitted} value={playerInput} onChange={handleChange} />
                 </form>
+                <div className="flex justify-center gap-2 mt-3">
+                    {accentedVowels.map((char) => (
+                        <button
+                            key={char}
+                            type="button"
+                            className="bg-moonstone w-9 h-9 p-0 flex items-center justify-center"
+                            disabled={answerSubmitted}
+                            onClick={() => insertCharacter(char)}
+                        >
+                            {char}
+                        </button>
+                    ))}
+                </div>
                 {button}
             </div>
         </div>
