@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 function QuestionCard() {
-    const { moods, tenses } = useSelector((state) => {
+    const { moods, tenses, commonVerbsOnly } = useSelector((state) => {
         return state.options;
     })
 
@@ -14,7 +14,8 @@ function QuestionCard() {
 
     const requestBody = {
         moods: simplifiedMoods,
-        tenses: simplifiedTenses
+        tenses: simplifiedTenses,
+        common_only: commonVerbsOnly
     }
 
     const question = useFetchConjugationQuery(requestBody);

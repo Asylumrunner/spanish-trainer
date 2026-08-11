@@ -9,10 +9,11 @@ const dataApi = createApi({
     endpoints(builder) {
         return {
             fetchFlashcard: builder.query({
-                query: () => {
+                query: (commonOnly = false) => {
                     return {
                         url: '/flashcard',
-                        method: 'GET'
+                        method: 'GET',
+                        params: { common_only: commonOnly }
                     }
                 }
             }),

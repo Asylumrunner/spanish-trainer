@@ -5,6 +5,7 @@ const optionsSlice = createSlice({
     initialState: {
         flashcardMode: true,
         englishToSpanish: true,
+        commonVerbsOnly: false,
         moods: {
             "Indicative": true,
             "Subjunctive": true
@@ -29,6 +30,9 @@ const optionsSlice = createSlice({
         toggleLanguageDirectionality(state, action) {
             state.englishToSpanish = action.payload;
         },
+        toggleCommonVerbsOnly(state) {
+            state.commonVerbsOnly = !state.commonVerbsOnly;
+        },
         toggleTense(state, action) {
             state.tenses[action.payload] = !state.tenses[action.payload];
         },
@@ -38,5 +42,5 @@ const optionsSlice = createSlice({
     }
 });
 
-export const { toggleFlashcardMode, toggleLanguageDirectionality, toggleTense, toggleMood } = optionsSlice.actions
+export const { toggleFlashcardMode, toggleLanguageDirectionality, toggleTense, toggleMood, toggleCommonVerbsOnly } = optionsSlice.actions
 export const optionsReducer = optionsSlice.reducer;

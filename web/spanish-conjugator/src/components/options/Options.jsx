@@ -1,11 +1,11 @@
-import { toggleFlashcardMode, toggleLanguageDirectionality, toggleMood, toggleTense } from "../../store";
+import { toggleFlashcardMode, toggleLanguageDirectionality, toggleMood, toggleTense, toggleCommonVerbsOnly } from "../../store";
 import { useSelector, useDispatch} from 'react-redux';
 import Select from "react-select";
 
 function Options() {
     const dispatch = useDispatch()
 
-    const { flashcardMode, englishToSpanish, moods, tenses } = useSelector((state) => {
+    const { flashcardMode, englishToSpanish, moods, tenses, commonVerbsOnly } = useSelector((state) => {
         return state.options;
     });
 
@@ -15,6 +15,10 @@ function Options() {
 
     const handleTenseToggle = (tense) => {
         dispatch(toggleTense(tense))
+    }
+
+    const handleCommonVerbsOnlyToggle = () => {
+        dispatch(toggleCommonVerbsOnly())
     }
 
     const setLanguageDirection = (selectedDirection) => {
@@ -85,10 +89,21 @@ function Options() {
 
     const advancedOptions = !flashcardMode && (<div><div>Mood: {moodToggles}</div><div>Tenses: {tenseToggles}</div></div>)
 
+    const commonVerbsToggle = (<div>
+        <input
+            type="checkbox"
+            id="commonVerbsOnly"
+            name="commonVerbsOnly"
+            checked={commonVerbsOnly}
+            onChange={handleCommonVerbsOnlyToggle}
+        /> <label htmlFor="commonVerbsOnly">100 Most Common Verbs</label>
+    </div>)
+
     return (
         <div className="mb-4 w-3/4 xl:w-1/2">
             <div>{modeDropdown}</div>
             <div>{flashcardMode && languageDropdown}</div>
+            <div>{commonVerbsToggle}</div>
             <div>{advancedOptions}</div>
         </div>
     )

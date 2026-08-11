@@ -3,6 +3,9 @@ import random
 
 class VerbDataManager():
     def __init__(self):
+        with open("./db/common_verbs.txt", "r", encoding='utf-8-sig') as commonfile:
+            self.common_verbs = {line.strip() for line in commonfile if line.strip()}
+
         with open("./db/jehle_verb_database.csv", "r", encoding='utf-8-sig') as csvfile:
             reader = csv.DictReader(csvfile)
             self.mappings = {
@@ -42,12 +45,19 @@ class VerbDataManager():
                 }
                 self.mappings[row["mood_english"]][row["tense_english"]][row["infinitive"]] = row
 
-    def get_flashcard(self):
-        return random.choice(list(self.mappings["Infinitive"].values()))
+    def _filter_common(self, entries):
+        return [entry for entry in entries if entry["infinitive"] in self.common_verbs]
 
-    def get_conjugation(self, moods, tenses):
+    def get_flashcard(self, common_only=False):
+        pool = list(self.mappings["Infinitive"].values())
+        if common_only:
+            pool = self._filter_common(pool)
+        return random.choice(pool)
+
+    def get_conjugation(self, moods, tenses, common_only=False):
         mood = random.choice(moods)
         tense = random.choice([tense for tense in tenses if (tense in self.mappings[mood])])
-        return random.choice(list(self.mappings[mood][tense].values()))
-
-            
+        pool = list(self.mappings[mood][tense].values())
+        if common_only:
+            pool = self._filter_common(pool)
+        return random.choice(pool)
